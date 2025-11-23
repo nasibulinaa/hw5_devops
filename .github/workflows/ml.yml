@@ -1,0 +1,21 @@
+name: ML Pipeline
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - uses: actions/setup-python@v6
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+    - run: pip install -r requirements.txt
+    - run: python my_script.py
+    - name: Upload reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: test
+        path: |
+          reports/
+          models/
+          mlruns/
