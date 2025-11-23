@@ -4,7 +4,7 @@ test:
   before_script:
     - pip3 install -r requirements.txt
   script:
-    - python contrib/ci_test.py
+    - python3 ci_test.py
   artifacts:
     paths:
       - reports/
